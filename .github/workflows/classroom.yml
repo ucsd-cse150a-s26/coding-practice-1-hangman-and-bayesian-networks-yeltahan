@@ -22,11 +22,11 @@ jobs:
         command: pytest tests/test_autograder.py::test_random_guess -v
         timeout: 5
         max-score: 2
-    - name: Bayesiaan inference
-      id: bayesiaan-inference
+    - name: Bayesian inference
+      id: bayesian-inference
       uses: classroom-resources/autograding-command-grader@v1
       with:
-        test-name: Bayesiaan inference
+        test-name: Bayesian inference
         setup-command: pip install -r tests/requirements-autograder.txt
         command: pytest tests/test_autograder.py::test_bayesiaan_inference -v
         timeout: 10
@@ -44,7 +44,7 @@ jobs:
       uses: classroom-resources/autograding-grading-reporter@v1
       env:
         RANDOM-GUESS_RESULTS: "${{steps.random-guess.outputs.result}}"
-        BAYESIAAN-INFERENCE_RESULTS: "${{steps.bayesiaan-inference.outputs.result}}"
+        BAYESIAN-INFERENCE_RESULTS: "${{steps.bayesian-inference.outputs.result}}"
         BENCHMARK-ACCURACY_RESULTS: "${{steps.benchmark-accuracy.outputs.result}}"
       with:
-        runners: random-guess,bayesiaan-inference,benchmark-accuracy
+        runners: random-guess,bayesian-inference,benchmark-accuracy
